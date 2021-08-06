@@ -6,31 +6,26 @@ import com.mercadopago.resources.datastructures.preference.Item;
 import java.util.List;
 
 public class PreferenceDTO {
-    private String id;
     private String initPoint;
     private String sandBoxInitPoint;
-    private Payer payer;
-    private List<Item> items;
 
-    public PreferenceDTO(String id, String initPoint, String sandBoxInitPoint, Payer payer, List<Item> items) {
-        this.id = id;
+
+    public PreferenceDTO(String initPoint, String sandBoxInitPoint) {
         this.initPoint = initPoint;
         this.sandBoxInitPoint = sandBoxInitPoint;
-        this.payer = payer;
-        this.items = items;
+    }
+
+    public String getInitPoint() {
+        return initPoint;
+    }
+
+    public void setInitPoint(String initPoint) {
+        this.initPoint = initPoint;
     }
 
     public static class Builder{
-        protected String id;
-        protected String initPoint;
-        protected String sandBoxInitPoint;
-        protected Payer payer;
-        protected List<Item> items;
-
-        public Builder id(String id){
-            this.id = id;
-            return this;
-        }
+        private String initPoint;
+        private String sandBoxInitPoint;
 
         public Builder initPoint(String initPoint){
             this.initPoint = initPoint;
@@ -42,18 +37,8 @@ public class PreferenceDTO {
             return this;
         }
 
-        public Builder payer(Payer payer){
-            this.payer = payer;
-            return this;
-        }
-
-        public Builder items(List<Item> items){
-            this.items = items;
-            return this;
-        }
-
         public PreferenceDTO build() {
-            return new PreferenceDTO(id, initPoint, sandBoxInitPoint, payer, items);
+            return new PreferenceDTO(initPoint, sandBoxInitPoint);
         }
     }
 
@@ -62,8 +47,6 @@ public class PreferenceDTO {
         return "PreferenceDTO{" +
                 "initPoint='" + initPoint + '\'' +
                 ", sandBoxInitPoint='" + sandBoxInitPoint + '\'' +
-                ", payer=" + payer +
-                ", items=" + items +
                 '}';
     }
 }

@@ -5,6 +5,7 @@ import br.com.mytech.repositories.ItemRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ItemRepositoryImpl implements ItemRepository {
 
@@ -25,5 +26,10 @@ public class ItemRepositoryImpl implements ItemRepository {
     @Override
     public List<ItemGeneric> findAll() {
         return this.itemGenerics;
+    }
+
+    @Override
+    public Optional<ItemGeneric> findById(String id) {
+        return this.itemGenerics.stream().filter(itemGeneric -> itemGeneric.getId().equals(id)).findFirst();
     }
 }

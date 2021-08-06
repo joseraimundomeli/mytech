@@ -3,7 +3,6 @@ package br.com.mytech.services.impl;
 import br.com.mytech.dtos.response.PreferenceDTO;
 import br.com.mytech.models.ItemGeneric;
 import br.com.mytech.repositories.ItemRepository;
-import br.com.mytech.repositories.impl.ItemRepositoryImpl;
 import br.com.mytech.services.PreferenceService;
 import com.mercadopago.exceptions.MPException;
 import com.mercadopago.resources.Preference;
@@ -13,10 +12,14 @@ import java.util.List;
 
 public class PreferenceServiceImpl implements PreferenceService {
 
-    private ItemRepository itemRepository;
+    private static ItemRepository itemRepository;
+
+    public PreferenceServiceImpl(ItemRepository itemRepository){
+        this.itemRepository = itemRepository;
+    }
 
     public PreferenceServiceImpl(){
-        this.itemRepository = new ItemRepositoryImpl();
+
     }
 
     @Override
@@ -25,8 +28,7 @@ public class PreferenceServiceImpl implements PreferenceService {
         List<ItemGeneric> itemGenerics = this.itemRepository.findAll();
 
         if (itemGenerics == null){
-            System.out.println("Error empty item list!");
-            // return error
+            throw new RuntimeException("Item list is empty!");
         }
 
         Preference preference = new Preference();
@@ -37,7 +39,7 @@ public class PreferenceServiceImpl implements PreferenceService {
                             .setTitle(itemGeneric.getTitle())
                             .setQuantity(itemGeneric.getQuantity())
                             .setCategoryId(itemGeneric.getCategory())
-                            .setUnitPrice((float)itemGeneric.getPrice().floatValue())
+                            .setUnitPrice(itemGeneric.getPrice().floatValue())
             );
         }
 
@@ -45,11 +47,8 @@ public class PreferenceServiceImpl implements PreferenceService {
 
         return new PreferenceDTO
                 .Builder()
-                .id(preference.getId())
                 .initPoint(preference.getInitPoint())
                 .sandBoxInitPoint(preference.getSandboxInitPoint())
-                .payer(preference.getPayer())
-                .items(preference.getItems())
                 .build();
     }
 }

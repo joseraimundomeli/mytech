@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="br.com.mytech.PreferenceServiceImplTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2021-08-06T17:02:15" hostname="BR0C02FJ3UEMD6M" time="1.253">
+  <properties/>
+  <testcase name="should return preference DTO" classname="br.com.mytech.PreferenceServiceImplTest" time="1.253">
+    <failure message="java.lang.NullPointerException: Cannot invoke &quot;br.com.mytech.models.ItemGeneric.getId()&quot; because &quot;itemGeneric&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot invoke &quot;br.com.mytech.models.ItemGeneric.getId()&quot; because &quot;itemGeneric&quot; is null
+	at br.com.mytech.services.impl.PreferenceServiceImpl.getPreference(PreferenceServiceImpl.java:35)
+	at br.com.mytech.PreferenceServiceImplTest.should return preference DTO(PreferenceServiceImplTest.groovy:58)
+</failure>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
