@@ -14,8 +14,8 @@ import static spark.Spark.get;
 
 <span class="nc" id="L15">public class PreferenceController {</span>
 
-<span class="nc" id="L17">    private static final PreferenceService preferenceService = new PreferenceServiceImpl(new ItemRepositoryImpl());</span>
-<span class="nc" id="L18">    private static final ItemService itemService = new ItemServiceImpl(new ItemRepositoryImpl());</span>
+<span class="nc" id="L17">    private static final PreferenceService preferenceService = new PreferenceServiceImpl();</span>
+<span class="nc" id="L18">    private static final ItemService itemService = new ItemServiceImpl();</span>
 
 
     public static void main(String[] args) throws MPConfException {

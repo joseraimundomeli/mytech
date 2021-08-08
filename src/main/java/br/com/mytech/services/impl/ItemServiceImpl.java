@@ -1,6 +1,6 @@
 package br.com.mytech.services.impl;
 
-import br.com.mytech.models.ItemGeneric;
+import br.com.mytech.models.ItemCustom;
 import br.com.mytech.repositories.ItemRepository;
 import br.com.mytech.repositories.impl.ItemRepositoryImpl;
 import br.com.mytech.services.ItemService;
@@ -15,9 +15,13 @@ public class ItemServiceImpl implements ItemService {
         this.itemRepository = itemRepository;
     }
 
+    public ItemServiceImpl(){
+        this.itemRepository = new ItemRepositoryImpl();
+    }
+
     @Override
-    public List<ItemGeneric> list() {
-        List<ItemGeneric> itens = itemRepository.findAll();
+    public List<ItemCustom> list() {
+        List<ItemCustom> itens = itemRepository.findAll();
         if (itens == null){
             throw new RuntimeException("Error list item is empty!");
         }
@@ -25,8 +29,8 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public ItemGeneric findById(String id) {
-        Optional<ItemGeneric> item = itemRepository.findById(id);
+    public ItemCustom findById(String id) {
+        Optional<ItemCustom> item = itemRepository.findById(id);
         if (!item.isPresent()){
             throw new RuntimeException("Error list item is empty!");
         }

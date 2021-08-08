@@ -1,10 +1,10 @@
 package br.com.mytech.services;
 
-import br.com.mytech.models.ItemGeneric;
+import br.com.mytech.models.ItemCustom;
 
 import java.util.List;
 
 public interface ItemService {
-    List<ItemGeneric> list();
-    ItemGeneric findById(String id);
+    List<ItemCustom> list();
+    ItemCustom findById(String id);
 }
