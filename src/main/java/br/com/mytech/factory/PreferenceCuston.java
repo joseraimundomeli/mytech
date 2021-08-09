@@ -1,4 +1,4 @@
-package br.com.mytech.dtos;
+package br.com.mytech.factory;
 
 public class PreferenceCuston {
     private String initPoint;

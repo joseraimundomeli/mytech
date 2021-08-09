@@ -1,6 +1,6 @@
 package br.com.mytech.dtos.response;
 
-import br.com.mytech.dtos.PreferenceCuston;
+import br.com.mytech.factory.PreferenceCuston;
 
 public class PreferenceDTO extends PreferenceCuston {
     private String sandBoxInitPoint;

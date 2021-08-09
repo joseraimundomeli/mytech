@@ -1,6 +1,6 @@
 package br.com.mytech.integration
 
-import br.com.mytech.dtos.PreferenceCuston
+import br.com.mytech.factory.PreferenceCuston
 import br.com.mytech.dtos.response.PreferenceDTO
 import br.com.mytech.factory.PreferenceFactory
 import br.com.mytech.models.ItemCustom
@@ -8,8 +8,6 @@ import br.com.mytech.models.ItemCustom
 import br.com.mytech.repositories.ItemRepository
 import br.com.mytech.services.PreferenceService
 import br.com.mytech.services.impl.PreferenceServiceImpl
-import com.mercadopago.resources.Preference
-import com.mercadopago.resources.datastructures.preference.Item
 import org.mockito.Mockito
 import spock.lang.Shared
 import spock.lang.Specification
