@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PreferenceController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mytech-backend</a> &gt; <a href="index.source.html" class="el_package">br.com.mytech.controllers</a> &gt; <span class="el_source">PreferenceController.java</span></div><h1>PreferenceController.java</h1><pre class="source lang-java linenums">package br.com.mytech.controllers;
+
+import br.com.mytech.repositories.impl.ItemRepositoryImpl;
+import br.com.mytech.services.ItemService;
+import br.com.mytech.services.PreferenceService;
+import br.com.mytech.services.impl.ItemServiceImpl;
+import br.com.mytech.services.impl.PreferenceServiceImpl;
+import com.mercadopago.MercadoPago;
+import com.mercadopago.exceptions.MPConfException;
+
+import static spark.Spark.before;
+import static spark.Spark.post;
+import static spark.Spark.get;
+
+<span class="nc" id="L15">public class PreferenceController {</span>
+
+<span class="nc" id="L17">    private static final PreferenceService preferenceService = new PreferenceServiceImpl();</span>
+<span class="nc" id="L18">    private static final ItemService itemService = new ItemServiceImpl();</span>
+
+
+    public static void main(String[] args) throws MPConfException {
+
+<span class="nc" id="L23">        MercadoPago.SDK.setAccessToken(System.getenv(&quot;USER_CREDENTIAL&quot;));</span>
+
+<span class="nc" id="L25">        before(&quot;/*&quot;, (request, response) -&gt; response.type(&quot;application/json&quot;));</span>
+
+
+<span class="nc" id="L28">        post(&quot;/preferences/id&quot;, (request, response) -&gt; {</span>
+<span class="nc" id="L29">            return preferenceService.getPreference().getInitPoint();</span>
+        });
+
+<span class="nc" id="L32">        post(&quot;/preferences&quot;, (request, response) -&gt; {</span>
+<span class="nc" id="L33">            return preferenceService.getPreference();</span>
+        });
+
+<span class="nc" id="L36">        get(&quot;/catalog&quot;, (request, response) -&gt;{</span>
+<span class="nc" id="L37">            return itemService.list();</span>
+        });
+<span class="nc" id="L39">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
