@@ -1,22 +1,20 @@
-package br.com.mytech
+package br.com.mytech.integration
 
-import br.com.mytech.models.ItemGeneric
+import br.com.mytech.models.ItemCustom
 import br.com.mytech.repositories.ItemRepository
 import br.com.mytech.services.ItemService
 import br.com.mytech.services.impl.ItemServiceImpl
+import br.com.mytech.services.impl.PreferenceServiceImpl
 import org.mockito.Mockito
 import spock.lang.Shared
 import spock.lang.Specification
-import sun.invoke.empty.Empty
-
-import javax.swing.text.html.Option
 
 class ItemServiceImplTest extends Specification {
 
     private final String REFERENCE_ID = "1";
 
     @Shared
-    private ItemGeneric mockItemReference =   new ItemGeneric("1", "Fusquinha Preto", 7000.0, 10, "Eletro")
+    private ItemCustom mockItemReference =   new ItemCustom("1", "Fusquinha Preto", 7000.0, 10, "Eletro")
 
 
     def "should return  a item" (){
@@ -61,5 +59,12 @@ class ItemServiceImplTest extends Specification {
             itemServiceMock.list()
         then:
             thrown(RuntimeException)
+    }
+
+    def "shuld create a ItemService" (){
+        when:
+            def expectedItemService = new ItemServiceImpl()
+        then:
+            expectedItemService != null
     }
 }

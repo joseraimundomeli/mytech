@@ -1,11 +1,11 @@
 package br.com.mytech.repositories;
 
-import br.com.mytech.models.ItemGeneric;
+import br.com.mytech.models.ItemCustom;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ItemRepository {
-    List<ItemGeneric> findAll();
-    Optional<ItemGeneric> findById(String id);
+    List<ItemCustom> findAll();
+    Optional<ItemCustom> findById(String id);
 }

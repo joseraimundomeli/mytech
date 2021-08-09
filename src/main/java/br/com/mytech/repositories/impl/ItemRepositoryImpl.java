@@ -1,6 +1,6 @@
 package br.com.mytech.repositories.impl;
 
-import br.com.mytech.models.ItemGeneric;
+import br.com.mytech.models.ItemCustom;
 import br.com.mytech.repositories.ItemRepository;
 
 import java.util.ArrayList;
@@ -9,27 +9,27 @@ import java.util.Optional;
 
 public class ItemRepositoryImpl implements ItemRepository {
 
-    private List<ItemGeneric> itemGenerics = new ArrayList<>();
+    private List<ItemCustom> itemGenerics = new ArrayList<>();
 
     public ItemRepositoryImpl() {
         itemGenerics.add(
-                new ItemGeneric("1", "Teste 1", 100.0, 10, "Eletro")
+                new ItemCustom("1", "Teste 1", 100.0, 10, "Eletro")
         );
         itemGenerics.add(
-                new ItemGeneric("2", "Teste 2", 100.0, 10, "Eletro")
+                new ItemCustom("2", "Teste 2", 100.0, 10, "Eletro")
         );
         itemGenerics.add(
-                new ItemGeneric("3", "Teste 3", 100.0, 10, "Eletro")
+                new ItemCustom("3", "Teste 3", 100.0, 10, "Eletro")
         );
     }
 
     @Override
-    public List<ItemGeneric> findAll() {
+    public List<ItemCustom> findAll() {
         return this.itemGenerics;
     }
 
     @Override
-    public Optional<ItemGeneric> findById(String id) {
+    public Optional<ItemCustom> findById(String id) {
         return this.itemGenerics.stream().filter(itemGeneric -> itemGeneric.getId().equals(id)).findFirst();
     }
 }

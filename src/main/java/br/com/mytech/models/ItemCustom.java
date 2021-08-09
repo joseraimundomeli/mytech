@@ -1,6 +1,6 @@
 package br.com.mytech.models;
 
-public class ItemGeneric {
+public class ItemCustom {
     private String id;
     private String title;
     private Double price;
@@ -8,7 +8,7 @@ public class ItemGeneric {
     private String category;
 
 
-    public ItemGeneric(String id, String title, Double price, Integer quantity, String category) {
+    public ItemCustom(String id, String title, Double price, Integer quantity, String category) {
         this.id = id;
         this.title = title;
         this.price = price;
@@ -21,40 +21,20 @@ public class ItemGeneric {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
     public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
     public String getCategory() {
         return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 
     public static class Builder {
@@ -89,19 +69,9 @@ public class ItemGeneric {
             return this;
         }
 
-        public ItemGeneric build(){
-            return new ItemGeneric(id, title, price, quantity, category);
+        public ItemCustom build(){
+            return new ItemCustom(id, title, price, quantity, category);
         }
 
-    }
-
-    @Override
-    public String toString() {
-        return "GenericItem{" +
-                " title='" + title + '\'' +
-                ", price=" + price + '\'' +
-                ", quantity=" + quantity + '\'' +
-                ", category='" + category + '\'' +
-                '}';
     }
 }
