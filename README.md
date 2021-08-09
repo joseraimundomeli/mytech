@@ -24,7 +24,7 @@
 
 Uma alternativa de código para contornar o problema acima é utilizando o *design pattern Factory Methods*, no qual é criado uma interface para lidar apenas pela criação de um novo objeto, desacoplando esta responsabilidade de antiga criadora.
 
-No exemplo anterior, é possível delegar o comportamento de criar um objeto dependente do método de B para uma classe FactoryB, então a class A se preocupará apenas com seu próprio objetivo e fluxo original de código (**S**OLID). Logo, durante o desenvolvimento dos testes, só o que importará para o teste do A.método é se o retorno de FactoryB satisfaz suas necessidades.
+No exemplo anterior, é possível delegar o comportamento de criar um objeto dependente do método de B para uma classe FactoryB, então a class A se preocupará apenas com seu próprio objetivo e fluxo original de código (**S**OLID). Logo, durante o desenvolvimento dos testes, só o que importará para o teste do A.metodoDeA é se o retorno de FactoryB satisfaz suas necessidades.
 
 	class ClasseA{  
 		FactoryB factoryB;  
@@ -33,7 +33,7 @@ No exemplo anterior, é possível delegar o comportamento de criar um objeto dep
 			this.factoryB = new FactoryBImpl();  
 		}  
 	
-		void metodo(){  
+		void metodoDeA(){  
 			// ... código ...  
 			Object necessaryObject = factoryB.criaPorMeioDeB("algum parâmetro para B");  
 			// ... faz algouma coisa ...  
