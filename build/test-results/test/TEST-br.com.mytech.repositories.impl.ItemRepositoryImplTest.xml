@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="br.com.mytech.repositories.impl.ItemRepositoryImplTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-08-10T16:16:36" hostname="BR0C02FJ3UEMD6M" time="0.087">
+  <properties/>
+  <testcase name="should return all itens in the dataset" classname="br.com.mytech.repositories.impl.ItemRepositoryImplTest" time="0.08"/>
+  <testcase name="should return return a item by id" classname="br.com.mytech.repositories.impl.ItemRepositoryImplTest" time="0.007"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

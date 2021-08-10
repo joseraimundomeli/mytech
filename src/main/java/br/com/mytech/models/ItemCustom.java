@@ -1,5 +1,7 @@
 package br.com.mytech.models;
 
+import java.util.Objects;
+
 public class ItemCustom {
     private String id;
     private String title;
@@ -73,5 +75,17 @@ public class ItemCustom {
             return new ItemCustom(id, title, price, quantity, category);
         }
 
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Builder builder = (Builder) o;
+            return Objects.equals(id, builder.id);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(id);
+        }
     }
 }

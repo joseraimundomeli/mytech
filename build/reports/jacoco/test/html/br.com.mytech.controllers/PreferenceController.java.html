@@ -25,18 +25,14 @@ import static spark.Spark.get;
 <span class="nc" id="L25">        before(&quot;/*&quot;, (request, response) -&gt; response.type(&quot;application/json&quot;));</span>
 
 
-<span class="nc" id="L28">        post(&quot;/preferences/id&quot;, (request, response) -&gt; {</span>
-<span class="nc" id="L29">            return preferenceService.getPreference().getInitPoint();</span>
+<span class="nc" id="L28">        post(&quot;/preferences&quot;, (request, response) -&gt; {</span>
+<span class="nc" id="L29">            return preferenceService.getPreference();</span>
         });
 
-<span class="nc" id="L32">        post(&quot;/preferences&quot;, (request, response) -&gt; {</span>
-<span class="nc" id="L33">            return preferenceService.getPreference();</span>
+<span class="nc" id="L32">        get(&quot;/catalog&quot;, (request, response) -&gt;{</span>
+<span class="nc" id="L33">            return itemService.list();</span>
         });
-
-<span class="nc" id="L36">        get(&quot;/catalog&quot;, (request, response) -&gt;{</span>
-<span class="nc" id="L37">            return itemService.list();</span>
-        });
-<span class="nc" id="L39">    }</span>
+<span class="nc" id="L35">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

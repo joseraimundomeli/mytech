@@ -25,10 +25,6 @@ public class PreferenceController {
         before("/*", (request, response) -> response.type("application/json"));
 
 
-        post("/preferences/id", (request, response) -> {
-            return preferenceService.getPreference().getInitPoint();
-        });
-
         post("/preferences", (request, response) -> {
             return preferenceService.getPreference();
         });

@@ -37,6 +37,14 @@ public class PreferenceServiceImpl implements PreferenceService {
             throw new RuntimeException("Item list is empty!");
         }
 
-        return preferenceFactory.createPreferenceCustom(itemGenerics);
+        Preference preference =  preferenceFactory.createPreferenceCustom(itemGenerics);
+
+        preference.save();
+
+        return new PreferenceDTO
+                .Builder()
+                .initPoint(preference.getInitPoint())
+                .sandBoxInitPoint(preference.getSandboxInitPoint())
+                .build();
     }
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="br.com.mytech.dtos.response.PreferenceDTOTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-08-10T16:16:36" hostname="BR0C02FJ3UEMD6M" time="0.019">
+  <properties/>
+  <testcase name="should return string of PreferenceDTO" classname="br.com.mytech.dtos.response.PreferenceDTOTest" time="0.004"/>
+  <testcase name="should return hash of PreferenceDTO" classname="br.com.mytech.dtos.response.PreferenceDTOTest" time="0.002"/>
+  <testcase name="should verify equal object with parameters" classname="br.com.mytech.dtos.response.PreferenceDTOTest" time="0.012"/>
+  <testcase name="should verify equal object" classname="br.com.mytech.dtos.response.PreferenceDTOTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

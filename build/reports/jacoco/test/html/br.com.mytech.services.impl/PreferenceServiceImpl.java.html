@@ -37,7 +37,15 @@ public class PreferenceServiceImpl implements PreferenceService {
 <span class="fc" id="L37">            throw new RuntimeException(&quot;Item list is empty!&quot;);</span>
         }
 
-<span class="fc" id="L40">        return preferenceFactory.createPreferenceCustom(itemGenerics);</span>
+<span class="fc" id="L40">        Preference preference =  preferenceFactory.createPreferenceCustom(itemGenerics);</span>
+
+<span class="fc" id="L42">        preference.save();</span>
+
+<span class="fc" id="L44">        return new PreferenceDTO</span>
+                .Builder()
+<span class="fc" id="L46">                .initPoint(preference.getInitPoint())</span>
+<span class="fc" id="L47">                .sandBoxInitPoint(preference.getSandboxInitPoint())</span>
+<span class="fc" id="L48">                .build();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

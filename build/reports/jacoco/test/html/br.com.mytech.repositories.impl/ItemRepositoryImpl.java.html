@@ -9,28 +9,32 @@ import java.util.Optional;
 
 public class ItemRepositoryImpl implements ItemRepository {
 
-<span class="fc" id="L12">    private List&lt;ItemCustom&gt; itemGenerics = new ArrayList&lt;&gt;();</span>
+    private List&lt;ItemCustom&gt; itemGenerics;
 
 <span class="fc" id="L14">    public ItemRepositoryImpl() {</span>
-<span class="fc" id="L15">        itemGenerics.add(</span>
-<span class="fc" id="L16">                new ItemCustom(&quot;1&quot;, &quot;Teste 1&quot;, 100.0, 10, &quot;Eletro&quot;)</span>
+<span class="fc" id="L15">        this.itemGenerics = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L16">        itemGenerics.add(</span>
+<span class="fc" id="L17">                new ItemCustom(&quot;1&quot;, &quot;Teste 1&quot;, 100.0, 10, &quot;Eletro&quot;)</span>
         );
-<span class="fc" id="L18">        itemGenerics.add(</span>
-<span class="fc" id="L19">                new ItemCustom(&quot;2&quot;, &quot;Teste 2&quot;, 100.0, 10, &quot;Eletro&quot;)</span>
+<span class="fc" id="L19">        itemGenerics.add(</span>
+<span class="fc" id="L20">                new ItemCustom(&quot;2&quot;, &quot;Teste 2&quot;, 100.0, 10, &quot;Eletro&quot;)</span>
         );
-<span class="fc" id="L21">        itemGenerics.add(</span>
-<span class="fc" id="L22">                new ItemCustom(&quot;3&quot;, &quot;Teste 3&quot;, 100.0, 10, &quot;Eletro&quot;)</span>
+<span class="fc" id="L22">        itemGenerics.add(</span>
+<span class="fc" id="L23">                new ItemCustom(&quot;3&quot;, &quot;Teste 3&quot;, 100.0, 10, &quot;Eletro&quot;)</span>
         );
-<span class="fc" id="L24">    }</span>
+<span class="fc" id="L25">    }</span>
+<span class="fc" id="L26">    public ItemRepositoryImpl(List&lt;ItemCustom&gt; itemGenerics) {</span>
+<span class="fc" id="L27">        this.itemGenerics = itemGenerics;</span>
+<span class="fc" id="L28">    }</span>
 
     @Override
     public List&lt;ItemCustom&gt; findAll() {
-<span class="nc" id="L28">        return this.itemGenerics;</span>
+<span class="fc" id="L32">        return this.itemGenerics;</span>
     }
 
     @Override
     public Optional&lt;ItemCustom&gt; findById(String id) {
-<span class="nc" id="L33">        return this.itemGenerics.stream().filter(itemGeneric -&gt; itemGeneric.getId().equals(id)).findFirst();</span>
+<span class="fc" id="L37">        return this.itemGenerics.stream().filter(itemGeneric -&gt; itemGeneric.getId().equals(id)).findFirst();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

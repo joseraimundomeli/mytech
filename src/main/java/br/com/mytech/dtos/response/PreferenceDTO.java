@@ -1,13 +1,14 @@
 package br.com.mytech.dtos.response;
 
-import br.com.mytech.factory.PreferenceCuston;
+import java.util.Objects;
 
-public class PreferenceDTO extends PreferenceCuston {
+public class PreferenceDTO  {
+    private String initPoint;
     private String sandBoxInitPoint;
 
 
     public PreferenceDTO(String initPoint, String sandBoxInitPoint) {
-        super(initPoint);
+        this.initPoint = initPoint;
         this.sandBoxInitPoint = sandBoxInitPoint;
     }
 
@@ -33,8 +34,20 @@ public class PreferenceDTO extends PreferenceCuston {
     @Override
     public String toString() {
         return "PreferenceDTO{" +
-                "initPoint='" + this.getInitPoint() + '\'' +
+                "initPoint='" + initPoint + '\'' +
                 ", sandBoxInitPoint='" + sandBoxInitPoint + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        PreferenceDTO that = (PreferenceDTO) o;
+        return Objects.equals(initPoint, that.initPoint) && Objects.equals(sandBoxInitPoint, that.sandBoxInitPoint);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(initPoint, sandBoxInitPoint);
     }
 }

@@ -1,10 +1,9 @@
-package br.com.mytech.integration
+package br.com.mytech.services.impl
 
 import br.com.mytech.models.ItemCustom
 import br.com.mytech.repositories.ItemRepository
 import br.com.mytech.services.ItemService
 import br.com.mytech.services.impl.ItemServiceImpl
-import br.com.mytech.services.impl.PreferenceServiceImpl
 import org.mockito.Mockito
 import spock.lang.Shared
 import spock.lang.Specification
@@ -21,11 +20,11 @@ class ItemServiceImplTest extends Specification {
         given:
             ItemRepository itemRepositoryMock = Mockito.mock(ItemRepository)
             Mockito.when(itemRepositoryMock.findById(REFERENCE_ID)).thenReturn(Optional.of(mockItemReference))
-            ItemService itemServiceMock = new ItemServiceImpl(itemRepositoryMock)
+        ItemService itemServiceMock = new ItemServiceImpl(itemRepositoryMock)
         when:
-            itemServiceMock.findById("1")
+            def result = itemServiceMock.findById("1")
         then:
-            mockItemReference
+            result == mockItemReference
     }
 
     def "should empty list error to try return a item" (){
@@ -45,9 +44,9 @@ class ItemServiceImplTest extends Specification {
             Mockito.when(itemRepositoryMock.findAll()).thenReturn([mockItemReference])
             ItemService itemServiceMock = new ItemServiceImpl(itemRepositoryMock)
         when:
-            itemServiceMock.list()
+            def result = itemServiceMock.list()
         then:
-            [mockItemReference]
+            result == [mockItemReference]
     }
 
     def "should erro to try return a null item list" (){

@@ -11,9 +11,8 @@ import java.util.List;
 
 public class PreferenceFactoryImpl implements PreferenceFactory {
     @Override
-    public PreferenceDTO createPreferenceCustom(List<ItemCustom> itens) throws MPException {
+    public Preference createPreferenceCustom(List<ItemCustom> itens){
         Preference preference = new Preference();
-
         for (ItemCustom itemCustom : itens) {
             preference.appendItem(
                     new Item().setId(itemCustom.getId())
@@ -23,14 +22,6 @@ public class PreferenceFactoryImpl implements PreferenceFactory {
                             .setUnitPrice(itemCustom.getPrice().floatValue())
             );
         }
-
-        Preference save = preference.save();
-        return new PreferenceDTO
-                .Builder()
-                .initPoint(preference.getInitPoint())
-                .sandBoxInitPoint(preference.getSandboxInitPoint())
-                .build();
-
+        return preference;
     }
-
 }

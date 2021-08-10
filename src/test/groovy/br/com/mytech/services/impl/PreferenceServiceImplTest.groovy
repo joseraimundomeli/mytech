@@ -1,6 +1,6 @@
-package br.com.mytech.integration
+package br.com.mytech.services.impl
 
-import br.com.mytech.factory.PreferenceCuston
+
 import br.com.mytech.dtos.response.PreferenceDTO
 import br.com.mytech.factory.PreferenceFactory
 import br.com.mytech.models.ItemCustom
@@ -8,6 +8,7 @@ import br.com.mytech.models.ItemCustom
 import br.com.mytech.repositories.ItemRepository
 import br.com.mytech.services.PreferenceService
 import br.com.mytech.services.impl.PreferenceServiceImpl
+import com.mercadopago.resources.Preference
 import org.mockito.Mockito
 import spock.lang.Shared
 import spock.lang.Specification
@@ -29,28 +30,31 @@ class PreferenceServiceImplTest extends Specification {
         given:
             ItemRepository mockItemRepository = Mockito.mock(ItemRepository)
             Mockito.when(mockItemRepository.findAll()).thenReturn(null)
-            PreferenceService mockPreferenceService = new PreferenceServiceImpl(mockItemRepository, null)
+        PreferenceService preferenceService = new PreferenceServiceImpl(mockItemRepository, null)
         when:
-            mockPreferenceService.getPreference()
+            preferenceService.getPreference()
         then:
             thrown(RuntimeException)
     }
 
    def "should return preference DTO"(){
         given:
-            PreferenceCuston mockPreferenceCuston = new PreferenceDTO("InitPointURL", "SendBoxInitPointURL")
+            PreferenceDTO referencePreferenceDTO = new PreferenceDTO("InitPointURL", "SendBoxInitPointURL")
 
+            Preference mockPreference = Mockito.mock(Preference)
             ItemRepository mockItemRepository = Mockito.mock(ItemRepository)
             PreferenceFactory mockPreferenceFactory = Mockito.mock(PreferenceFactory)
 
             Mockito.when(mockItemRepository.findAll()).thenReturn(referenceItemList)
-            Mockito.when(mockPreferenceFactory.createPreferenceCustom(referenceItemList)).thenReturn(mockPreferenceCuston)
+            Mockito.when(mockPreferenceFactory.createPreferenceCustom(referenceItemList)).thenReturn(mockPreference)
+            Mockito.when(mockPreference.initPoint).thenReturn("InitPointURL")
+            Mockito.when(mockPreference.sandboxInitPoint).thenReturn("SendBoxInitPointURL")
 
-            PreferenceService mockPreferenceService = new PreferenceServiceImpl(mockItemRepository, mockPreferenceFactory)
+            PreferenceService preferenceService = new PreferenceServiceImpl(mockItemRepository, mockPreferenceFactory)
         when:
-            mockPreferenceService.getPreference()
+            def result = preferenceService.getPreference()
         then:
-            mockPreferenceCuston
+            result.equals(referencePreferenceDTO)
     }
 
     def "shuld create a PreferenceService by defaul constructor" (){

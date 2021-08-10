@@ -9,9 +9,10 @@ import java.util.Optional;
 
 public class ItemRepositoryImpl implements ItemRepository {
 
-    private List<ItemCustom> itemGenerics = new ArrayList<>();
+    private List<ItemCustom> itemGenerics;
 
     public ItemRepositoryImpl() {
+        this.itemGenerics = new ArrayList<>();
         itemGenerics.add(
                 new ItemCustom("1", "Teste 1", 100.0, 10, "Eletro")
         );
@@ -21,6 +22,9 @@ public class ItemRepositoryImpl implements ItemRepository {
         itemGenerics.add(
                 new ItemCustom("3", "Teste 3", 100.0, 10, "Eletro")
         );
+    }
+    public ItemRepositoryImpl(List<ItemCustom> itemGenerics) {
+        this.itemGenerics = itemGenerics;
     }
 
     @Override

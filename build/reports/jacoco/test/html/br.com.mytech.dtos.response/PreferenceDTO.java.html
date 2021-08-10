@@ -1,41 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PreferenceDTO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mytech-backend</a> &gt; <a href="index.source.html" class="el_package">br.com.mytech.dtos.response</a> &gt; <span class="el_source">PreferenceDTO.java</span></div><h1>PreferenceDTO.java</h1><pre class="source lang-java linenums">package br.com.mytech.dtos.response;
 
-import br.com.mytech.dtos.PreferenceCuston;
+import java.util.Objects;
 
-public class PreferenceDTO extends PreferenceCuston {
+public class PreferenceDTO  {
+    private String initPoint;
     private String sandBoxInitPoint;
 
 
-    public PreferenceDTO(String initPoint, String sandBoxInitPoint) {
-<span class="fc" id="L10">        super(initPoint);</span>
-<span class="fc" id="L11">        this.sandBoxInitPoint = sandBoxInitPoint;</span>
-<span class="fc" id="L12">    }</span>
+<span class="fc" id="L10">    public PreferenceDTO(String initPoint, String sandBoxInitPoint) {</span>
+<span class="fc" id="L11">        this.initPoint = initPoint;</span>
+<span class="fc" id="L12">        this.sandBoxInitPoint = sandBoxInitPoint;</span>
+<span class="fc" id="L13">    }</span>
 
-<span class="nc" id="L14">      public static class Builder{</span>
+<span class="fc" id="L15">      public static class Builder{</span>
         private String initPoint;
         private String sandBoxInitPoint;
 
         public Builder initPoint(String initPoint){
-<span class="nc" id="L19">            this.initPoint = initPoint;</span>
-<span class="nc" id="L20">            return this;</span>
+<span class="fc" id="L20">            this.initPoint = initPoint;</span>
+<span class="fc" id="L21">            return this;</span>
         }
 
         public Builder sandBoxInitPoint(String sandBoxInitPoint){
-<span class="nc" id="L24">            this.sandBoxInitPoint = sandBoxInitPoint;</span>
-<span class="nc" id="L25">            return this;</span>
+<span class="fc" id="L25">            this.sandBoxInitPoint = sandBoxInitPoint;</span>
+<span class="fc" id="L26">            return this;</span>
         }
 
         public PreferenceDTO build() {
-<span class="nc" id="L29">            return new PreferenceDTO(initPoint, sandBoxInitPoint);</span>
+<span class="fc" id="L30">            return new PreferenceDTO(initPoint, sandBoxInitPoint);</span>
         }
     }
 
     @Override
     public String toString() {
-<span class="nc" id="L35">        return &quot;PreferenceDTO{&quot; +</span>
-<span class="nc" id="L36">                &quot;initPoint='&quot; + this.getInitPoint() + '\'' +</span>
+<span class="fc" id="L36">        return &quot;PreferenceDTO{&quot; +</span>
+                &quot;initPoint='&quot; + initPoint + '\'' +
                 &quot;, sandBoxInitPoint='&quot; + sandBoxInitPoint + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+<span class="fc bfc" id="L44" title="All 4 branches covered.">        if (o == null || getClass() != o.getClass()) return false;</span>
+<span class="fc" id="L45">        PreferenceDTO that = (PreferenceDTO) o;</span>
+<span class="fc bfc" id="L46" title="All 4 branches covered.">        return Objects.equals(initPoint, that.initPoint) &amp;&amp; Objects.equals(sandBoxInitPoint, that.sandBoxInitPoint);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="fc" id="L51">        return Objects.hash(initPoint, sandBoxInitPoint);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
